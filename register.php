@@ -18,11 +18,11 @@
             <div class="">
               <h2 class="text-uppercase text-center mb-5 fw-bold text-light">Create an account</h2>
 
-              <form action="traitement.php" method="post"> 
+              <form>
 
                 <div class="form-outline mb-2">
-                  <label class="form-label" for="name">Your Name</label>
-                  <input type="text" id="name" name="name" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example1cg">Your Name</label>
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
                   
                 </div>
 
@@ -52,11 +52,11 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <button type="submit"
-                    class="btn btn-black bg-black btn-block btn-lg gradient-custom-4 text-white">Register</button>
+                  <button type="button"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                 </div>
 
-                <p class="text-center text-light mt-2 mb-0 ">Have already an account? <a href="login.php"
+                <p class="text-center text-light mt-2 mb-0 ">Have already an account? <a href="#!"
                     class="fw-bold text-light"><u>Login here</u></a></p>
 
               </form>
