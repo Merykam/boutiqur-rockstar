@@ -1,7 +1,7 @@
 body {
-    background-image: url('guitar.jpg');
-    height: 100vh;
-    
+    background-image: url('images/love.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     
     background-size: cover;
     
@@ -11,6 +11,18 @@ form input{
     opacity: 0.8;
 }
 .form-label{
-  color:white;
+  color:rgb(255, 255, 255);
   font-weight: bold;
+}
+form{
+  z-index: 1;
+}
+form .error-msg{
+  margin: 10px 0;
+  display: block;
+  background-color: brown;
+  color: blanchedalmond;
+  border-radius: 5px;
+  font-size:20px ;
+
 }

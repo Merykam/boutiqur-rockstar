@@ -1,3 +1,9 @@
+<?php
+
+include('backend.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,44 +22,45 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="" style="border-radius: 15px;">
             <div class="">
-              <h2 class="text-uppercase text-center mb-5 fw-bold text-light">Create an account</h2>
+              <h2 class="text-uppercase text-center mb-5 mt-2 fw-bold text-black">Create an account</h2>
 
-              <form action="traitement.php" method="post"> 
+              <form action="" method="post"> 
 
                 <div class="form-outline mb-2">
+                  <?php
+                  if(isset($_SESSION['a'])){
+                      echo "<span class='error-msg'>{$_SESSION['a']}</span>";
+                      unset($_SESSION['a']);
+                    
+                  }
+                  ?>
                   <label class="form-label" for="name">Your Name</label>
-                  <input type="text" id="name" name="name" class="form-control form-control-lg" />
+                  <input type="text" id="name" name="Name" class="form-control form-control-lg" require />
                   
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="form3Example3cg">Your Email</label>
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                  <input name="Email" type="email" id="form3Example3cg" class="form-control form-control-lg" require />
                   
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="form3Example4cg">Password</label>
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                  <input name="Password" type="password" id="form3Example4cg" class="form-control form-control-lg" require />
                   
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                  <input name="repeat-password" type="password" id="form3Example4cdg" class="form-control form-control-lg" require/>
                   
                 </div>
 
-                <div class="form-check d-flex justify-content-center mb-1">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                  <label class="form-check-label text-light" for="form2Example3g" >
-                    I agree all statements in <a href="#!" class="text-light"><u>Terms of service</u></a>
-                  </label>
-                </div>
-
                 <div class="d-flex justify-content-center">
-                  <button type="submit"
-                    class="btn btn-black bg-black btn-block btn-lg gradient-custom-4 text-white">Register</button>
+              
+                  <input name="register" type="submit"
+                    class="btn btn-black bg-black btn-block btn-lg gradient-custom-4 text-white"/>
                 </div>
 
                 <p class="text-center text-light mt-2 mb-0 ">Have already an account? <a href="login.php"

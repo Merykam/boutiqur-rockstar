@@ -1,0 +1,119 @@
+body{
+    background-color:white ;
+}
+
+
+.navbar{
+    background-color:white!important;
+    box-shadow: 2px 2px 4px rgb(167, 162, 157) ;
+}
+.btn{
+    border-color:gray ;
+    color:gray;
+    font-weight: bold;
+}
+.btn :hover{
+   
+    color: white !important;
+}
+.logo{
+    width: 50px !important;
+    
+}
+
+h1{
+    font-weight: bold;
+    color: black;
+    text-shadow:2px 2px 4px black ;
+    
+    
+}
+h1 .firstH1{
+    color:gray;
+     
+}
+/* aside{
+    background-color:black!important;
+    box-shadow: 2px 2px 4px rgb(117, 111, 104)  ;
+
+
+} */
+.bg-dark{
+    background-color: black !important;
+    /* background-image: url('images/guitarnew.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover; */
+
+}
+.imgP{
+    width: 100px;
+    height: 100px;
+    border: solid 0px;
+    background-image: url('images/pro.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;   
+
+}
+.welcomMsg{
+    
+    width: 100%;
+    
+    background-image: url('images/helloo.jpg');
+    background-position: center;
+    background-size: cover;
+    box-shadow: 2px 2px 2px 2px rgb(208, 197, 197);
+    display: flex;
+    padding: 100px;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.welcomMsg h1{
+    text-align: center;
+    font-weight: bold;
+    text-shadow:  5Px 5px rgb(21, 20, 18) 10px;
+    padding-top: 15px;
+    /* justify-content: center; */
+}
+.welcomMsg .text-dark{
+    
+    color: black;
+
+    /* display: flex; */
+}
+.addinstrument{
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+}
+.addinstrument .text-white {
+    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    color: #fff;
+
+}
+h1 #STATI{
+    color: white ;
+}
+.imgcard{
+    height: 270px;
+    background-image: url('images/guitar.jpg');
+    background-repeat: no-repeat;
+    background-position:center ;
+    background-size: cover;
+}
+.card1{
+    background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+    color: #fff;
+}
+.card2{
+    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    color: #fff;
+}
+.card3{
+    background: linear-gradient(to right, #a86008, #ffba56) !important;
+    color: #fff;
+}
+.shadow{
+    box-shadow: #373b44 !important;
+}
+
