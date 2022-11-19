@@ -5,6 +5,8 @@ session_start();
 if(isset($_POST['register'])) saveInfo();
 if(isset($_POST["login"])) dashbord();
 if(isset($_POST["save"])) instrumentData();
+if(isset($_GET["delet"])) deletData();
+if(isset($_POST["update2"])) updateData();
 
     
 
@@ -55,8 +57,9 @@ function  dashbord(){
     $_SESSION["user"] = $data["name"] ;
     
 
-    header("location:/boutique-rockstar/dashbord.php") ;
+    header("location:newdash.php") ;
  }
+
 
 function instrumentData(){
     global $conn;
@@ -82,20 +85,180 @@ function instrumentData(){
         }
     }
    
-header('location:dashbord.php');
+header('location:newdash.php');
 
 }
 function showinstrumentData(){
     global $conn;
     $req="SELECT* FROM products";
     $query=mysqli_query($conn,$req);
-    $row=mysqli_fetch_assoc($query);
-    while($row){
+    while($row=mysqli_fetch_assoc($query)){
+        echo  '<div class="col col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
+        <div class="card Larger shadow">
+        <div class="imgcard" style="background-image: url(upload_img/'.$row['pic'].');">
+    
+       </div>
+         
+          <div class="card-body">
+          
+            <h4 class="card-title text-center">'.$row['name'].'</h4>
+            <H5 class="text-center">'.$row['price'].'DH</H5>
+            <H5 class="text-center">La quantité :'.$row['quantity'].'</H5>
+            <p class="text-center">'.$row['description'].'</p>
+            <div class="row">
+            <a class="col text-decoration-none bg-danger text-light text-center rounded-pill shadow-danger" href="newdash.php?delet='.$row['id'].'">Delet</a>
+            <a class="col text-decoration-none bg-primary text-light rounded-pill text-center shadow-primary" href="update.php?update='.$row['id'].'">Update</a>
+            </div>
+       
+            
+          </div>
+         
+          
+        </div>
+        </div>';
 
     }
 
 }
+function deletData(){
+    global $conn;
+    $id=$_GET["delet"];
+    $dele="DELETE FROM `products` WHERE id=$id";
+    mysqli_query($conn,$dele);
+    header('location:newdash.php');
+}
 
+function updateData(){
+    global $conn;
+    $id=$_GET["update"];
+
+    $name=$_POST['name'];
+    $price=$_POST['price'];
+    $quantity=$_POST['quantity'];
+    $description=$_POST['description'];
+
+    $pic=$_FILES['pic']['name'];
+    $pic_tmp_name=$_FILES['pic']['tmp_name'];
+    $pic_img_folder='upload_img/'.$pic;
+
+    if(empty($name)|| empty($price) || empty($quantity) || empty( $description)){
+        $_SESSION['msg']='please fill out all';
+    }else{
+        
+        $dele="UPDATE `products` SET `name`=' $name',`pic`='$pic',`price`='$price',`quantity`='$quantity',`description`=' $description' WHERE id=$id";
+
+        $upload = mysqli_query($conn,$dele);
+        if($upload){
+            move_uploaded_file($pic_tmp_name,$pic_img_folder);
+
+        }
+    }
+
+   
+    
+    mysqli_query($conn,$dele);
+    header('location:newdash.php');
+  
+
+
+}
+
+function showProductupdate(){
+
+    global $conn;
+    $id=$_GET["update"];
+  
+    $req="SELECT* FROM products WHERE id=$id" ;
+    $query=mysqli_query($conn,$req);
+    
+    $row=mysqli_fetch_assoc($query);
+        
+        echo '<div class="modal-content bg-light p-4">
+        <div class="modal-header d-flex justify-content-between ">
+          <h5 class="modal-title fw-bold " >Add new instrument</h5>
+          <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+          
+        </div>
+
+        
+        
+        <div class="modal-body pt-3">
+            <div class="mb-3 fw-bold ">
+                <label for="title" class="form-label">instrument name</label>
+                <input value="'.$row['name'].'" name="name" type="text" class="form-control" id="title" >
+            </div>
+            <div class="mb-3 fw-bold ">
+                <label for="title" class="form-label">instrument picture</label>
+                <input value="upload_img/'.$row['pic'].'" name="pic" accept="image/png, image/jpg, image/jpeg" type="file" class="form-control" id="title"  >
+            </div>
+            <div class="price-quantite row">
+            <div class="mb-3 fw-bold col ">
+                <label for="title" class="form-label">instrument price</label>
+                <input value="'.$row['price'].'" name="price" type="number" class="form-control" id="title"  >
+            </div>
+            <div class="mb-3 fw-bold quantite col">
+                <label for="title" class="form-label">Quantity</label>
+                <input value="'.$row['quantity'].'" name="quantity" type="number" min="1"  class="form-control" id="title"  >
+            </div>
+
+            </div>
+            
+
+              <div class="mb-3">
+                <div class="fw-bold mb-2 mt-2 color">description</div>
+                <input value="'.$row['name'].'" name="description" class="form-control" id="description" rows="8">
+              </div>
+        </div>
+        <div class="modal-footer" id="id-footer d-flex justify-content-center ">
+          
+          <button type="submit" class="btn btn-success " data-bs-dismiss="modal" name="update2">Update</button>
+         
+        </div>
+      </div>';
+        
+    }
+    
+
+
+function Countt(){
+    global $conn;
+    
+    $sql = "SELECT *
+            FROM products
+           ";
+
+    $req = mysqli_query($conn, $sql);
+
+    $rowcount = mysqli_num_rows($req);
+
+    echo $rowcount;
+}
+function Countt2(){
+    global $conn;
+    
+    $sql = "SELECT *
+            FROM `register-form`"
+           ;
+
+    $req = mysqli_query($conn, $sql);
+
+    $rowcount = mysqli_num_rows($req);
+
+    echo $rowcount;
+}
+function Countt3(){
+    global $conn;
+    
+    $sql = "SELECT *
+            FROM products
+           ";
+
+    $req = mysqli_query($conn, $sql);
+
+    $rowcount = mysqli_num_rows($req);
+
+    echo $rowcount;
+}
 
 
 ?>

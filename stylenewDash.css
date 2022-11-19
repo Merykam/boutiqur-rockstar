@@ -96,7 +96,7 @@ h1 #STATI{
 }
 .imgcard{
     height: 270px;
-    background-image: url('images/guitar.jpg');
+    
     background-repeat: no-repeat;
     background-position:center ;
     background-size: cover;

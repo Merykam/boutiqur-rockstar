@@ -45,27 +45,7 @@ include('backend.php');
       <button type="button" class="btn-close btn btn-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       
       <div class="offcanvas-body">
-        <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3"> -->
-          <!-- <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
-          </li> -->
-          <!-- <li class="nav-item"> -->
-            <!-- <a class="nav-link text-white" href="#">Link</a> -->
-          <!-- </li>
-          <li class="nav-item dropdown"> -->
-            <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a> -->
-            <!-- <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul> -->
-          <!-- </li> -->
-        <!-- </ul> -->
+      
         <form class="d-flex mt-3" role="search">
           
           <button class="btn btn-outline-light bg-light " type="submit">Log out</button>
@@ -92,13 +72,13 @@ include('backend.php');
 <div class="d-flex justify-content-between p-3">
 <div class="card  card1 " style="width: 25rem;">
   <div class="card-body">
-  <h1><span class="STATI text-white">0</span></h1>
+  <h1><span class="STATI text-white"><?php Countt();?></span></h1>
     <p>instruments</p>
   </div>
 </div>
 <div class="card card2" style="width: 25rem;">
   <div class="card-body">
-    <h1><span class="STATI text-white">0</span></h1>
+    <h1><span class="STATI text-white"><?php Countt2();?></span></h1>
     <p>Admines</p>
   </div>
 </div>
@@ -115,23 +95,13 @@ include('backend.php');
 
 
 <!-- card instrument -->
-<div class="row row-cols-1 row-cols-md-3  row-cols-lg-4 g-4 m-auto">
-  <div class="col">
-    <div class="card Larger shadow">
-    <div class="imgcard">
+<div class="row m-auto">
+  <?php
+  showinstrumentData();
+  
+  ?>
+ 
 
-   </div>
-      <!-- <img src="images/drum.jpg" class="card-img-top" alt="..." style=""> -->
-      <div class="card-body">
-      
-        <h4 class="card-title text-center">Guitar</h4>
-        <H5 class="text-center">200 DH</H5>
-        <H5 class="text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. </H5>
-        <button class="btn bg-danger text-white rounded-pill fw-bold">Delet</button>
-        <button type="button" class="btn bg-primary text-white rounded-pill fw-bold" data-bs-toggle="modal" data-bs-target="#form" onclick="AddTask()"><i class="fa fa-plus"></i> Update</button>
-        
-      </div>
-    </div>
   
   
 </div>
@@ -154,7 +124,7 @@ include('backend.php');
             </div>
             <div class="mb-3 fw-bold ">
                 <label for="title" class="form-label">instrument picture</label>
-                <input name="pic" type="file" class="form-control" id="title"  >
+                <input name="pic" accept="image/png, image/jpg, image/jpeg" type="file" class="form-control" id="title"  >
             </div>
             <div class="price-quantite row">
             <div class="mb-3 fw-bold col ">
@@ -171,69 +141,18 @@ include('backend.php');
 
               <div class="mb-3">
                 <div class="fw-bold mb-2 mt-2 color">description</div>
-                <textarea name="description" class="form-control" id="description" rows="8"></textarea>
+                <input name="description" class="form-control" id="description" rows="8">
               </div>
         </div>
         <div class="modal-footer" id="id-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button id="save" type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="save">Save</button>
-          <!-- <button id="update"  type="button" class="btn btn-warning">Update</button>
-          <button id="delete" type="button" class="btn btn-danger">Delete</button> -->
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-gray bg-light" data-bs-dismiss="modal" name="save">Save</button>
+          
         </div>
       </div>
     </div>
 </form>
-    <!-- <nav class="navbar navbar-expand-lg bg-light ">
-    <div class="container-fluid">
-        <h1 class="me-4"> <span>R</span>ock<span>S</span>tar</h1>
     
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active fw-bold" aria-current="page" href="#">Home</a>
-        </li>
-         -->
-        
-          <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a> -->
-          <!-- <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul> -->
-        <!-- </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li> -->
-      <!-- </ul>
-      <form class="d-flex" role="search">
-        <input class="me-3" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-bg-dark me-2" type="submit">Search</button>
-        <button class="btn btn-bg-dark " type="submit">Log out</button>
-      </form>
-    </div>
-  </div>
-</nav>
-    <section class="row vh-100">
-        <aside class="col-2  text-white">
-            <div class="container bg-muted">
-               
-                
-                
-                    
-               
-            </div>
-        </aside>
-        <div class="col-10">
-
-        </div>
-       
-    </section> -->
 
 
 

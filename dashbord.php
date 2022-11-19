@@ -1,6 +1,4 @@
-<?php 
-include('backend.php');  
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,45 +24,7 @@ include('backend.php');
     
   <form method="post" class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" name="first-form" enctype="multipart/form-data">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title fw-bold" id="exampleModalLabel">Add instrument</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="mb-3 fw-bold ">
-                <label for="title" class="form-label">instrument name</label>
-                <input name="name" type="text" class="form-control" id="title"  >
-            </div>
-            <div class="mb-3 fw-bold ">
-                <label for="title" class="form-label">instrument picture</label>
-                <input name="pic" type="file" class="form-control" id="title"  >
-            </div>
-            <div class="price-quantite">
-            <div class="mb-3 fw-bold ">
-                <label for="title" class="form-label">instrument price</label>
-                <input name="price" type="number" class="form-control" id="title"  >
-            </div>
-            <div class="mb-3 fw-bold quantite ">
-                <label for="title" class="form-label">Quantity</label>
-                <input name="quantity" type="number" min='1'  class="form-control" id="title"  >
-            </div>
-
-            </div>
-            
-
-              <div class="mb-3">
-                <div class="fw-bold mb-2 mt-2 color">description</div>
-                <textarea name="description" class="form-control" id="description" rows="8"></textarea>
-              </div>
-        </div>
-        <div class="modal-footer" id="id-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button id="save" type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="save">Save</button>
-          <!-- <button id="update"  type="button" class="btn btn-warning">Update</button>
-          <button id="delete" type="button" class="btn btn-danger">Delete</button> -->
-        </div>
-      </div>
+      
     </div>
 </form>
 
