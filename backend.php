@@ -2,19 +2,27 @@
 include('config.php');
 session_start();
 
-if(isset($_POST['register'])) saveInfo();
-if(isset($_POST["login"])) dashbord();
+if(isset($_POST['register'])) Register();
+if(isset($_POST["login"])) logIn();
 if(isset($_POST["save"])) instrumentData();
 if(isset($_GET["delet"])) deletData();
 if(isset($_POST["update2"])) updateData();
 
+
+
+if(isset($_POST['logout'])) logout();
     
 
+function logout(){
+
+    session_destroy();
+   
+    header('location:Newlogin.php');
+}
 
 
 
-
-function saveInfo(){
+function Register(){
     global $conn;
     $name=$_POST['Name'];
     $email=$_POST['Email'];
@@ -25,6 +33,9 @@ function saveInfo(){
     $result = mysqli_query($conn, $select);
     if(mysqli_num_rows($result) > 0){
         $_SESSION['a']= 'admin already exist ! ';
+        header('location:register2.php');
+        die;
+
     }else{
         if($password !== $Rpassword){
 
@@ -32,32 +43,50 @@ function saveInfo(){
         }else{
             $query="INSERT INTO `register-form` (`name`, `email`, `password`, `Rpassword`) VALUES ('$name','$email','$password', '$Rpassword')";
             mysqli_query($conn,$query);
-            header('location:login.php');
+            $_SESSION['a']= 'good!';
+            header('location:Newlogin.php');
+
 
         }
     }
 
 
 
-
 }
 
-function  dashbord(){
+function  logIn(){
     global $conn;
-    
+   
+
     $email =  $_POST["email"] ;
     $pwd = $_POST["pwd"] ;
 
     $select = "SELECT * FROM `register-form` WHERE email= '$email' AND password = '$pwd'";
 
     $result = mysqli_query($conn, $select);
-
-    $data = mysqli_fetch_assoc($result) ;
-    
-    $_SESSION["user"] = $data["name"] ;
     
 
-    header("location:newdash.php") ;
+    if(mysqli_num_rows($result) == 1){ 
+        $data = mysqli_fetch_assoc($result) ;
+        $_SESSION["user"] = $data["name"] ;
+        header("location:newdash.php") ;
+        die;
+    }
+
+    else{
+        $_SESSION["err1"]='Incorrect email or password';
+        header("location: Newlogin.php") ;
+        die;
+
+    }
+   
+
+    
+    
+    
+    
+
+  
  }
 
 
@@ -88,6 +117,8 @@ function instrumentData(){
 header('location:newdash.php');
 
 }
+
+
 function showinstrumentData(){
     global $conn;
     $req="SELECT* FROM products";
@@ -105,9 +136,9 @@ function showinstrumentData(){
             <H5 class="text-center">'.$row['price'].'DH</H5>
             <H5 class="text-center">La quantité :'.$row['quantity'].'</H5>
             <p class="text-center">'.$row['description'].'</p>
-            <div class="row">
-            <a class="col text-decoration-none bg-danger text-light text-center rounded-pill shadow-danger" href="newdash.php?delet='.$row['id'].'">Delet</a>
-            <a class="col text-decoration-none bg-primary text-light rounded-pill text-center shadow-primary" href="update.php?update='.$row['id'].'">Update</a>
+            <div class="row gap-3">
+            <a class="col ms-2 p-2 fw-bold text-decoration-none bg-danger text-light text-center rounded-pill" href="newdash.php?delet='.$row['id'].'">Delete</a>
+            <a class="col me-2 p-2 fw-bold text-decoration-none bg-success text-light rounded-pill text-center " href="update.php?update='.$row['id'].'">Update</a>
             </div>
        
             
@@ -236,10 +267,7 @@ function Countt(){
 function Countt2(){
     global $conn;
     
-    $sql = "SELECT *
-            FROM `register-form`"
-           ;
-
+    $sql = "SELECT * FROM `register-form`";
     $req = mysqli_query($conn, $sql);
 
     $rowcount = mysqli_num_rows($req);
@@ -248,16 +276,22 @@ function Countt2(){
 }
 function Countt3(){
     global $conn;
-    
-    $sql = "SELECT *
-            FROM products
-           ";
 
+    $sql = "SELECT * FROM products";
     $req = mysqli_query($conn, $sql);
+    
 
-    $rowcount = mysqli_num_rows($req);
 
-    echo $rowcount;
+    $totalprix=0;
+    while($row=mysqli_fetch_assoc($req)){
+        
+        $totalprix+=$row['price']*$row['quantity'] ;
+
+    }
+    echo $totalprix;
+    
+
+
 }
 
 

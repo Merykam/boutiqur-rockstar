@@ -1,6 +1,9 @@
 body{
     background-color:white ;
 }
+h1 span{
+    color: #4cc9c5!important;;
+}
 
 
 .navbar{
@@ -51,19 +54,20 @@ h1 .firstH1{
     border: solid 0px;
     background-image: url('images/pro.jpg');
     background-size: cover;
-    background-repeat: no-repeat;   
+    background-repeat: no-repeat; 
+    
 
 }
 .welcomMsg{
     
     width: 100%;
     
-    background-image: url('images/helloo.jpg');
+    background-image: url('images/color.jpg');
     background-position: center;
     background-size: cover;
     box-shadow: 2px 2px 2px 2px rgb(208, 197, 197);
     display: flex;
-    padding: 100px;
+    padding: 150px;
     flex-direction: column;
     align-items: center;
     
@@ -102,18 +106,35 @@ h1 #STATI{
     background-size: cover;
 }
 .card1{
-    background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+    background: linear-gradient(to right, #1d3c6f, #4286f4) !important;
     color: #fff;
 }
 .card2{
-    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    /* background: linear-gradient(to right, #373b44, #4286f4) !important; */
+   
+    background: linear-gradient(to right, #1a4e4c, #4cc9c5) !important;
     color: #fff;
 }
 .card3{
-    background: linear-gradient(to right, #a86008, #ffba56) !important;
+    background: linear-gradient(to right, #615d57, #9f9a92) !important;
     color: #fff;
 }
 .shadow{
     box-shadow: #373b44 !important;
+}
+.btn1{
+    border: none;
+    height: 30px;
+    width: 40%;
+    background-color: #4cc9c5;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+  
+  }
+
+.logout {
+    background: linear-gradient(to right, #1d3c6f, #4286f4) !important;
+    
 }
 

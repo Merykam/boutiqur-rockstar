@@ -1,10 +1,4 @@
 
-<?php
-
-include('backend.php');
-// use LDAP\Result;
-
-?>
 
 
  
