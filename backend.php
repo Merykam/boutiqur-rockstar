@@ -29,7 +29,7 @@ function Register(){
     $password=$_POST['Password'];
     $Rpassword=$_POST['repeat-password'];
 
-    $select = "SELECT * FROM `register-form` WHERE email= '$email'";
+    $select = "SELECT * FROM `Admins` WHERE email= '$email'";
     $result = mysqli_query($conn, $select);
     if(mysqli_num_rows($result) > 0){
         $_SESSION['a']= 'admin already exist ! ';
@@ -41,7 +41,7 @@ function Register(){
 
             $_SESSION['a']= 'password not matched!';
         }else{
-            $query="INSERT INTO `register-form` (`name`, `email`, `password`, `Rpassword`) VALUES ('$name','$email','$password', '$Rpassword')";
+            $query="INSERT INTO `Admins` (`name`, `email`, `password`, `Rpassword`) VALUES ('$name','$email','$password', '$Rpassword')";
             mysqli_query($conn,$query);
             $_SESSION['a']= 'good!';
             header('location:Newlogin.php');
@@ -61,7 +61,7 @@ function  logIn(){
     $email =  $_POST["email"] ;
     $pwd = $_POST["pwd"] ;
 
-    $select = "SELECT * FROM `register-form` WHERE email= '$email' AND password = '$pwd'";
+    $select = "SELECT * FROM `Admins` WHERE email= '$email' AND password = '$pwd'";
 
     $result = mysqli_query($conn, $select);
     
@@ -172,18 +172,26 @@ function updateData(){
     $pic_tmp_name=$_FILES['pic']['tmp_name'];
     $pic_img_folder='upload_img/'.$pic;
 
-    if(empty($name)|| empty($price) || empty($quantity) || empty( $description)){
-        $_SESSION['msg']='please fill out all';
-    }else{
+    // if(empty($name)|| empty($price) || empty($quantity) || empty( $description)){
+    //     $_SESSION['msg']='please fill out all';
+   
+        if(empty($pic)){
+            
+        $dele="UPDATE `products` SET `name`=' $name',`price`='$price',`quantity`='$quantity',`description`=' $description' WHERE id=$id";
+
+        }else{
+            $dele="UPDATE `products` SET `name`=' $name',`price`='$price',`pic`='$pic',`quantity`='$quantity',`description`=' $description' WHERE id=$id";
+
+        }
+       
         
-        $dele="UPDATE `products` SET `name`=' $name',`pic`='$pic',`price`='$price',`quantity`='$quantity',`description`=' $description' WHERE id=$id";
 
         $upload = mysqli_query($conn,$dele);
         if($upload){
             move_uploaded_file($pic_tmp_name,$pic_img_folder);
 
         }
-    }
+   
 
    
     
@@ -191,8 +199,8 @@ function updateData(){
     header('location:newdash.php');
   
 
-
 }
+
 
 function showProductupdate(){
 
@@ -237,7 +245,7 @@ function showProductupdate(){
 
               <div class="mb-3">
                 <div class="fw-bold mb-2 mt-2 color">description</div>
-                <input value="'.$row['name'].'" name="description" class="form-control" id="description" rows="8">
+                <input value="'.$row['description'].'" name="description" class="form-control" id="description" rows="8">
               </div>
         </div>
         <div class="modal-footer" id="id-footer d-flex justify-content-center ">
@@ -267,7 +275,7 @@ function Countt(){
 function Countt2(){
     global $conn;
     
-    $sql = "SELECT * FROM `register-form`";
+    $sql = "SELECT * FROM `Admins`";
     $req = mysqli_query($conn, $sql);
 
     $rowcount = mysqli_num_rows($req);

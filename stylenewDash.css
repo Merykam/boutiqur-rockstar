@@ -61,6 +61,7 @@ h1 .firstH1{
 .welcomMsg{
     
     width: 100%;
+    margin: auto;
     
     background-image: url('images/color.jpg');
     background-position: center;
@@ -137,4 +138,5 @@ h1 #STATI{
     background: linear-gradient(to right, #1d3c6f, #4286f4) !important;
     
 }
+
 

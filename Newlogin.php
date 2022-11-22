@@ -32,9 +32,9 @@ include('backend.php');
     <section class="Form my-4 mx-5">
         <div class="container">
             <div class="row g-0 ">
-                <div class="col-lg-5 vh-100 ">
-                    <img src="images/color1.jpg" class="img-fluid vh-100" alt="">
-                </div>
+            <div class="col-lg-5">
+
+            </div>
                 <div class="col-lg-7 px-5 pt-5">
                 <h1 class="fw-bold"> <span >R</span>ock<span class="">S</span>ta<span >r</span></h1>
                 <h5 class="text-muted fw-bold">Sign in</h5>

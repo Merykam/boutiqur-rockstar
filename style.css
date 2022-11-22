@@ -85,3 +85,9 @@ h1{
   border-radius: 4px;
 
 }
+.col-lg-5{
+  background-image: url('images/color1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

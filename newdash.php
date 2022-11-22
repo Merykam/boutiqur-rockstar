@@ -29,8 +29,12 @@ if(!isset( $_SESSION["user"])) header('location:Newlogin.php')
 </head>
 <body>
 
+<div class="container-fluid">
+
+
+
 <!-- start nav -->
-<nav class="navbar bg-light">
+<nav class="navbar bg-light fixed-top container-fluid">
   <div class="container-fluid">
     <h1 class="me-4"> <span class="firstH1">R</span>ock<span class="">S</span>ta<span class="">r</span></h1>
     <a class="navbar-brand" href="#"></a>
@@ -39,48 +43,32 @@ if(!isset( $_SESSION["user"])) header('location:Newlogin.php')
       <span class="navbar-toggler-icon"></span>
     </button>
 
-  <!-- start sidebar -->
+    <!-- start sidebar -->
     
 
     
-    <div class="offcanvas offcanvas-start  bg-light w-25 d-flex align-items-center"  tabindex="-1" id="offcanvasNavbar" >
+    <div class="offcanvas offcanvas-start  bg-light d-flex align-items-center"  tabindex="-1" id="offcanvasNavbar" 
+    style="max-width: 50%;">
 
- 
-    
-
-
-
-
-			
-
-       <div class="imgP rounded-circle mt-5 ">
-        
-
-        </div>
+      <div class="imgP rounded-circle mt-5 ">
+      </div>
 
 
       <span class="text-dark py-3 fw-bold">
       <?php if(isset($_SESSION["user"])){
         echo $_SESSION["user"];};
-      ?> 
-      
+      ?>
       </span>
+
       <span class="text-muted">Admin boutique RockStar</span> 
-							
-        
-    
-      
-      
-      
-    
-      
+
       <form method="post">
         <button type="submit" class=" fw-bold border-0 mt-3 p-2 rounded text-white logout" name="logout">Log out</button>
       </form>
     
 
     </div>
-   <!-- start sidebar -->
+    <!-- End sidebar -->
   </div>
 </nav>
 
@@ -92,8 +80,8 @@ if(!isset( $_SESSION["user"])) header('location:Newlogin.php')
     <h4 class="text-gray  text-center fw-bold"><?php if(isset($_SESSION["user"])){
             echo $_SESSION["user"];};?> </h4>
 
-  </div>
-  <div class="addinstrument d-f ">
+</div>
+<div class="addinstrument d-f ">
     <button type="button" class="btn text-white rounded-pill fw-bold " data-bs-toggle="modal" data-bs-target="#form"><i class="fa fa-plus"></i> Add instrument</button>
   </div>
 
@@ -101,23 +89,30 @@ if(!isset( $_SESSION["user"])) header('location:Newlogin.php')
 </div>
 
 <!-- statistiques -->
-<div class="d-flex justify-content-between p-3">
-<div class="card  card1 " style="width: 25rem;">
-  <div class="card-body">
+<div class="row mt-3  mx-auto">
+  <div class="col-md-4 col-sm-12 p-1">
+<div class="card  card1 ">
+  <div class="card-body ">
   <h1><span class="STATI text-white"><?php Countt();?></span></h1>
-    <p>instruments</p>
+    <p>Total products</p>
   </div>
 </div>
-<div class="card card2" style="width: 25rem;">
+</div>
+<div class="col-md-4 col-sm-12 p-1">
+<div class="card card2 ">
   <div class="card-body">
     <h1><span class="STATI text-white"><?php Countt2();?></span></h1>
-    <p>Admines</p>
+   
+    <p>Total admins</p></span>
   </div>
 </div>
-<div class="card card3 " style="width: 25rem;">
+</div>
+<div class="col-md-4 col-sm-12 p-1">
+<div class="card card3">
   <div class="card-body">
-  <h1><span class="STATI text-white"><?php Countt3();?>DH</span></h1>
-    <p>Revenu</p>
+  <h1><span class="STATI text-white"><?php Countt3();?> DH</span></h1>
+    <p>Capital</p>
+  </div>
   </div>
 </div>
 
@@ -127,7 +122,7 @@ if(!isset( $_SESSION["user"])) header('location:Newlogin.php')
 
 
 <!-- card instrument -->
-<div class="row m-auto">
+<div class="row mt-3">
   <?php
   showinstrumentData();
   
@@ -138,8 +133,8 @@ if(!isset( $_SESSION["user"])) header('location:Newlogin.php')
   
 </div>
 
-
 <!-- end card instrument -->
+
  <!-- Modal -->
     
  <form method="post" class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" name="first-form" enctype="multipart/form-data" data-parsley-validate>
@@ -184,6 +179,8 @@ if(!isset( $_SESSION["user"])) header('location:Newlogin.php')
       </div>
     </div>
 </form>
+
+</div>
     
 
 
