@@ -69,7 +69,7 @@ function  logIn(){
     if(mysqli_num_rows($result) == 1){ 
         $data = mysqli_fetch_assoc($result) ;
         $_SESSION["user"] = $data["name"] ;
-        header("location:newdash.php") ;
+        header("location:Dashbord.php") ;
         die;
     }
 
@@ -114,7 +114,7 @@ function instrumentData(){
         }
     }
    
-header('location:newdash.php');
+header('location:Dashbord.php');
 
 }
 
@@ -133,11 +133,11 @@ function showinstrumentData(){
           <div class="card-body">
           
             <h4 class="card-title text-center">'.$row['name'].'</h4>
-            <H5 class="text-center">'.$row['price'].'DH</H5>
-            <H5 class="text-center">La quantité :'.$row['quantity'].'</H5>
+            <H5 class="text-center">'.$row['price'].' DH</H5>
+            <H5 class="text-center">La quantité : '.$row['quantity'].'</H5>
             <p class="text-center">'.$row['description'].'</p>
             <div class="row gap-3">
-            <a class="col ms-2 p-2 fw-bold text-decoration-none bg-danger text-light text-center rounded-pill" href="newdash.php?delet='.$row['id'].'">Delete</a>
+            <a class="col ms-2 p-2 fw-bold text-decoration-none bg-danger text-light text-center rounded-pill" href="Dashbord.php?delet='.$row['id'].'">Delete</a>
             <a class="col me-2 p-2 fw-bold text-decoration-none bg-success text-light rounded-pill text-center " href="update.php?update='.$row['id'].'">Update</a>
             </div>
        
@@ -156,7 +156,7 @@ function deletData(){
     $id=$_GET["delet"];
     $dele="DELETE FROM `products` WHERE id=$id";
     mysqli_query($conn,$dele);
-    header('location:newdash.php');
+    header('location:Dashbord.php');
 }
 
 function updateData(){
@@ -196,7 +196,7 @@ function updateData(){
    
     
     mysqli_query($conn,$dele);
-    header('location:newdash.php');
+    header('location:Dashbord.php');
   
 
 }
